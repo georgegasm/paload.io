@@ -6,9 +6,27 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit04372bc7c95e2d9f7eba85a4285fbeec
 {
+    public static $prefixesPsr0 = array (
+        'S' => 
+        array (
+            'SecurityLib' => 
+            array (
+                0 => __DIR__ . '/..' . '/ircmaxell/security-lib/lib',
+            ),
+        ),
+        'R' => 
+        array (
+            'RandomLib' => 
+            array (
+                0 => __DIR__ . '/..' . '/ircmaxell/random-lib/lib',
+            ),
+        ),
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixesPsr0 = ComposerStaticInit04372bc7c95e2d9f7eba85a4285fbeec::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

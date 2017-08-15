@@ -1,5 +1,5 @@
 {
     "require": {
-        "twbs/bootstrap": "^3.3"
+        "ircmaxell/random-lib": "^1.2"
     }
 }

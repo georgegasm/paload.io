@@ -11,19 +11,16 @@ Class User extends CI_Model
         
         $query = $this -> db -> get();
         
-        if($query -> num_rows() == 1)
-        {
-            $result = $query->row();
-            $user = array(
-                    "id"       => $result->id,
-                    "username" => $result->username
-                );
-            $this->session->set_userdata('user', $user);
-            return true;
-        }
-        else
+        if($query -> num_rows() === 0)
         {
             return false;
         }
+        $result = $query->row();
+        $user = array(
+                "id"       => $result->id,
+                "username" => $result->username
+            );
+        $this->session->set_userdata('user', $user);
+        return true;
     }
 }

@@ -6,11 +6,11 @@ class Login extends CI_Controller {
     {
         parent::__construct();
         $this->load->Model('user');
-        $this->session->sess_destroy();
     }
 
     public function index()
     {
+        $this->session->sess_destroy();
         $this->load->view('login_view');
     }
 

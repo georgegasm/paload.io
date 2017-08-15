@@ -3,29 +3,35 @@ $(function(){
         e.preventDefault();
         var username = $("#username").val();
         var password = $("#password").val();
-        $.ajax({
-            method: "POST",
-            url: "login/validateLogin",
-            data: { 
-                username: username, 
-                password: password 
-            }
-        }).done(function( response ) {
-            if(response === "0")
-            {
-                displayLoginFailed();
-                return;
-            }
-            window.location = "dashboard"
-        });
+        validateLogin(username,password);
     });
 });
 
-function displayLoginFailed(){
+function displayLoginFailed()
+{
     swal({
       title: "Login Failed!",
       text: "Incorrect Username and Password combination",
       type: "error",
       confirmButtonText: "Okay"
+    });
+}
+
+function validateLogin(username,password)
+{
+    $.ajax({
+        method: "POST",
+        url: "login/validateLogin",
+        data: { 
+            username: username, 
+            password: password 
+        }
+    }).done(function( response ) {
+        if(response === "0")
+        {
+            displayLoginFailed();
+            return;
+        }
+        window.location = "dashboard";
     });
 }
